@@ -1,0 +1,63 @@
+<!-- loan-management-app.html -->
+<head>
+  <title>Loan Management App</title>
+</head>
+
+<body>
+  {{> registerForm}}
+  {{> loanRequestForm}}
+  {{> confirmPaymentForm}}
+  {{> pastLoans}}
+  {{> pastPayments}}
+</body>
+
+<template name="registerForm">
+  <h2>Register</h2>
+  <form>
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    
+    <label>Role:</label>
+    <select name="role">
+      <option value="admin">Admin</option>
+      <option value="borrower">Borrower</option>
+      <option value="lender">Lender</option>
+    </select>
+    
+    <button type="submit">Register</button>
+  </form>
+</template>
+
+<template name="loanRequestForm">
+  <h2>Request Loan</h2>
+  <form>
+    <label>Amount:</label>
+    <input type="number" name="amount" required>
+    
+    <button type="submit">Request Loan</button>
+  </form>
+</template>
+
+<template name="confirmPaymentForm">
+  <h2>Confirm Payment</h2>
+  <form>
+    <label>Loan ID:</label>
+    <input type="text" name="loanId" required>
+    
+    <button type="submit">Confirm Payment</button>
+  </form>
+</template>
+
+<template name="pastLoans">
+  <h2>Past Loans</h2>
+  {{#each loans}}
+    <p>Loan ID: {{_id}}, Amount: {{amount}}, Status: {{status}}</p>
+  {{/each}}
+</template>
+
+<template name="pastPayments">
+  <h2>Past Payments</h2>
+  {{#each payments}}
+    <p>Loan ID: {{_id}}, Amount: {{amount}}, Status: {{status}}</p>
+  {{/each}}
+</template>
